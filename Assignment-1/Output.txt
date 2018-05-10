@@ -1,0 +1,71 @@
+Original Matrix:
+26	8	2	12	67	89	8	78	56	7	
+13	9	57	11	10	99	15	90	88	15	
+6	23	28	32	53	59	48	41	60	62	
+17	6	93	95	20	25	29	31	71	30	
+16	13	26	22	14	66	71	5	2	91	
+40	53	22	18	44	73	77	84	89	88	
+34	54	89	8	65	74	96	3	1	80	
+14	28	39	44	86	88	75	77	93	4	
+65	66	82	97	51	41	28	33	55	79	
+13	48	71	98	26	38	55	59	7	19	
+
+Matrix 1: Three random columns from Original, column elements sorted
+10	6	2	
+14	13	22	
+20	13	26	
+26	14	28	
+44	16	39	
+51	17	57	
+53	26	71	
+65	34	82	
+67	40	89	
+86	65	93	
+
+Matrix 2: Three random columns from Original (not repeated from Matrix 1), column elements sorted
+99	98	93	
+89	97	89	
+88	95	88	
+74	44	71	
+73	32	60	
+66	22	56	
+59	18	55	
+41	12	7	
+38	11	2	
+25	8	1	
+
+Matrix 3: Matrix 1 and Matrix 2 elements added together
+109	104	95	
+103	110	111	
+108	108	114	
+100	58	99	
+117	48	99	
+117	39	113	
+112	44	126	
+106	46	89	
+105	51	91	
+111	73	94	
+
+Matrix 4: Matrix 3's row elements added together
+308
+324
+330
+257
+264
+269
+282
+241
+247
+278
+
+Matrix 5: Matrix 4 elements sorted
+241
+247
+257
+264
+269
+278
+282
+308
+324
+330

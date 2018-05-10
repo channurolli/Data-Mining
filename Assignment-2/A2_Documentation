@@ -1,0 +1,178 @@
+Course: CS 512
+Assignment: 2
+Instructor: A R Hadaegh
+Date Last Modified: 2/20/2018
+
+==========================================================================================================================
+
+ALGORITHM:
+
+import numpy as np
+import sys
+import os
+
+# Reads in an input file and returns an n*n matrix composed of elements from that input file.
+def GetDataFromFile(filename, n):
+    # File contents are first copied to an array to enable simpler counting and manipulation.
+    Array = np.fromfile(filename, dtype=int, sep="\t")
+    # Returns an error message if the file did not contain enough elements to build an n*n matrix.
+    if n*n > Array.size:
+        print("Not enough elements in " + filename + ".txt.")
+        sys.exit()
+    else:
+        Matrix = Array[:(n*n)]
+        return np.reshape(Matrix, (n,n))
+
+# Finds the product of two matrices.
+def MatrixProd(Matrix1, Matrix2):
+    # Checks that Matrix1 has as many columns as Matrix2 has rows
+    if Matrix1.shape[1] == Matrix2.shape[0]:
+        return np.matmul(Matrix1, Matrix2)
+
+# Finds the dot product of two matrices
+def MatrixDotProd(Matrix1, Matrix2):
+    # Checks that Matrix1 has as many columns as Matrix2 has rows
+    if Matrix1.shape[1] == Matrix2.shape[0]:
+        return np.dot(Matrix1, Matrix2)
+
+# Returns the transposed form of the original matrix.
+def Transpose(OrigMatrix):
+    return np.transpose(OrigMatrix)
+
+# Writes all parameter Matrices to an output file.
+def OutputFile(M1, M2, M3, M4, M5, M6, M7, M8):
+    with open(os.path.join(os.path.dirname(__file__), "Output.txt"), 'w') as fout:
+        fout.write("Matrix from file1.txt:" + "\n")
+        fout.write(str(M1))
+        fout.write("\n" + "Matrix from file2.txt:" + "\n")
+        fout.write(str(M2))
+        fout.write("\n" + "Product of M1 and M2:" + "\n")
+        fout.write(str(M3))
+        fout.write("\n" + "Dot Product of M1 and M2:" + "\n")
+        fout.write(str(M4))
+        fout.write("\n" + "Transposed M1:" + "\n")
+        fout.write(str(M5))
+        fout.write("\n" + "Transposed M2:" + "\n")
+        fout.write(str(M6))
+        fout.write("\n" + "Product of Transposed M1 and Transposed M2:" + "\n")
+        fout.write(str(M7))
+        fout.write("\n" + "Dot Product of Transposed M1 and Transposed M2:" + "\n")
+        fout.write(str(M8))
+        
+        
+        
+MAIN
+
+import A2_Defs
+import sys
+
+n = input("Please enter a positive number: ")
+n = int(n)
+if n <= 3:
+    print("Error: Input out of bounds.")
+    sys.exit()
+else:
+    M1 = A2_Defs.GetDataFromFile("file1.txt", n)
+
+M2 = A2_Defs.GetDataFromFile("file2.txt", n)
+M1_prod_M2 = A2_Defs.MatrixProd(M1,M2)
+M1_dotprod_M2 = A2_Defs.MatrixDotProd(M1, M2)
+M1_trans = A2_Defs.Transpose(M1)
+M2_trans = A2_Defs.Transpose(M2)
+M1_trans_prod_M2_trans = A2_Defs.MatrixProd(M1_trans, M2_trans)
+M1_trans_dotprod_M2_trans = A2_Defs.MatrixDotProd(M1_trans, M2_trans)
+
+print("Matrix from file1.txt:")
+print(M1)
+print("Matrix from file2.txt:")
+print(M2)
+print("Product of M1 and M2:")
+print(M1_prod_M2)
+print("Dot Product of M1 and M2:")
+print(M1_dotprod_M2)
+print("Transposed M1:")
+print(M1_trans)
+print("Transposed M2:")
+print(M2_trans)
+print("Product of Transposed M1 and Transposed M2:")
+print(M1_trans_prod_M2_trans)
+print("Dot Product of Transposed M1 and Transposed M2:")
+print(M1_trans_dotprod_M2_trans)
+
+A2_Defs.OutputFile(M1, M2, M1_prod_M2, M1_dotprod_M2, M1_trans, M2_trans, M1_trans_prod_M2_trans, M1_trans_dotprod_M2_trans)
+
+
+END ALGORITHM
+
+
+
+DATA:
+
+File1.txt
+1	2	3	4	5	6
+7	8	9	10	11	12
+13	14	15	16	17	18
+19	20	21	22	23	24
+25	26	27	28	29	30
+31	32	33	34	35	36
+
+
+File2.txt
+10	200	30	40	50	60
+70	80	90	100	110	120
+130	140	150	160	170	180
+190	200	210	22	230	240
+250	260	270	28	290	300
+310	320	330	34	350	360
+
+
+
+OUTPUT
+Matrix from file1.txt:
+[[ 1  2  3  4  5]
+ [ 6  7  8  9 10]
+ [11 12 13 14 15]
+ [16 17 18 19 20]
+ [21 22 23 24 25]]
+Matrix from file2.txt:
+[[ 10 200  30  40  50]
+ [ 60  70  80  90 100]
+ [110 120 130 140 150]
+ [160 170 180 190 200]
+ [210  22 230 240 250]]
+Product of M1 and M2:
+[[ 2150  1490  2450  2600  2750]
+ [ 4900  4400  5700  6100  6500]
+ [ 7650  7310  8950  9600 10250]
+ [10400 10220 12200 13100 14000]
+ [13150 13130 15450 16600 17750]]
+Dot Product of M1 and M2:
+[[ 2150  1490  2450  2600  2750]
+ [ 4900  4400  5700  6100  6500]
+ [ 7650  7310  8950  9600 10250]
+ [10400 10220 12200 13100 14000]
+ [13150 13130 15450 16600 17750]]
+Transposed M1:
+[[ 1  6 11 16 21]
+ [ 2  7 12 17 22]
+ [ 3  8 13 18 23]
+ [ 4  9 14 19 24]
+ [ 5 10 15 20 25]]
+Transposed M2:
+[[ 10  60 110 160 210]
+ [200  70 120 170  22]
+ [ 30  80 130 180 230]
+ [ 40  90 140 190 240]
+ [ 50 100 150 200 250]]
+Product of Transposed M1 and Transposed M2:
+[[ 3230  4900  7650 10400 11962]
+ [ 3560  5300  8300 11300 12914]
+ [ 3890  5700  8950 12200 13866]
+ [ 4220  6100  9600 13100 14818]
+ [ 4550  6500 10250 14000 15770]]
+Dot Product of Transposed M1 and Transposed M2:
+[[ 3230  4900  7650 10400 11962]
+ [ 3560  5300  8300 11300 12914]
+ [ 3890  5700  8950 12200 13866]
+ [ 4220  6100  9600 13100 14818]
+ [ 4550  6500 10250 14000 15770]]

@@ -1,0 +1,90 @@
+Course: CS 512
+Assignment: 1
+Instructor: A. R. Hadaegh
+Date Last Modified: 2/6/2018
+===================================================================================================================
+ALGORITHM
+def InitMatrix(rows, cols)
+    Initialize an array with length rows.
+        Each array element is a subarray of length cols, with each element initialized as 0.
+    Return this array.
+
+def GetDataFromDataFile
+    Instance variables:
+        row: tracks the current row in the matrix
+        col: tracks the current element in the current row of the matrix
+        token: stores the characters of any given number in the data file
+    Initialize NewMatrix, a 10 by 10 matrix.
+    Open the file "Data.txt" as a read-only file object, fin.
+    Set row to 0.
+    For each line in fin:
+        Set col to 0.
+        For each character in the line:
+            Whenever a whitespace character is encountered:
+                Increment col.
+                Convert token to an int and assign it to the NewMatrix element at [row][col].
+                Reset token to a blank string.
+            Else concatenate the current character to token.
+        Increment row.
+    Return NewMatrix.
+
+def MakeMatrix(OriginalMatrix, ColA, ColB, ColC, sortorder)
+    Initialize NewMatrix, a 10 by 3 matrix.
+        ColA, ColB, and ColC represent the columns of OriginalMatrix that will form NewMatrix.
+    For each of ColA, ColB, and ColC from Original Matrix and each row in the current column:
+        Copy the OriginalMatrix element at current row/column position to the corresponding position of NewMatrix.
+    For each column of NewMatrix:
+        Sort the elements in ascending or descending order, depending on sortorder.
+    Return NewMatrix.
+
+def GetThreeRandomNumbers(OriginalMatrix, Num1, Num2, Num3)
+    Num1, Num2, and Num3 are optional parameters that indicate three numbers that cannot be returned.
+    Instance variables:
+        ColA, ColB, ColC: the three random numbers that will be returned
+    Initialize ColA as Num1, ColB as Num2, and ColC as Num3.
+    Run a while loop that randomly generates a new value for ColA until ColA != Num1, Num2, or Num3.
+    Run a while loop that randomly generates a new value for ColB until ColB != ColA, Num1, Num2, or Num3.
+    Run a while loop that randomly generates a new value for ColC until ColC != ColA, ColB, Num1, Num2, or Num3.
+    Return ColA, ColB, and ColC in that order.
+
+def Adding Matrices(Matrix1, Matrix2)
+    Initialize Matrix3, a matrix with the same number of rows and columns as Matrix1 and Matrix2.
+    For each row in Matrix1 and each column element in the current row:
+        Add the elements of Matrix1 and Matrix2 at the current row/column position.
+        Copy the result to the corresponding position in Matrix3.
+
+def AddingContentOfEachRow(Matrix)
+    Instance variable:
+        ColTotal: stores the cumulative total of all elements in one column of Matrix
+    Initialize NewMatrix, a matrix with the same number of rows as Matrix, but no columns
+    For each row in Matrix and each element in the current row:
+        Add each element to ColTotal.
+        When the end of the current row is reached, copy ColTotal to the corresponding row of NewMatrix.
+    Return NewMatrix.
+
+def SortingMatrix(Matrix, order)
+    If the Matrix is only a row, with no columns:
+        Copy the elements of Matrix to Vector, a 10 by 1 matrix.
+            For each element i and all following elements j in Vector:
+                If the current i-element is greater than a following j-element and order is 'A' or 'a':
+                    Switch the positions of the i and j elements.
+                If the current i-element is less than a following j-element and order is 'D' or 'd':
+                    Switch the positions of the i and j elements.
+        Return Vector.
+
+def MatrixToString(Matrix)
+    Instance variable:
+        PrintedMatrix: string that stores all elements of the Matrix in string form
+    If the Matrix is one-dimensional:
+        For each element of the Matrix, concatenate the element to PrintedMatrix along with a newline character.
+    If the Matrix is two-dimensional:
+        For each row of the Matrix and each column of the current row:
+            Concatenate the element at the Matrix's current row/column position to PrintedMatrix.
+            When the end of each row is reached, concatenate a newline character to PrintedMatrix.
+    Return PrintedMatrix.
+
+def PrintOutput(OriginalMatrix, Matrix1, Matrix2, Matrix3, Matrix4, Matrix5)
+    Open the file "Output.txt" as a writing file object, fout.
+        Call MatrixToString() for each Matrix in the parameters and print the return values.
+
+END ALGORITHM
